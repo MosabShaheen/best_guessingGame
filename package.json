@@ -1,5 +1,5 @@
 {
-  "name": "guessing_game",
+  "name": "best_guessing",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -7,6 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node index.js"
+  },
+  "bin": {
+    "guessing": "index.js"
   },
   "author": "",
   "license": "ISC",
