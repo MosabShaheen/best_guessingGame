@@ -36,12 +36,14 @@ async function guessingGame() {
         ]);
         if (userInput.InputNumber == pcRandom) {
             console.log(`Congratulations! You have guessed the number: ${pcRandom}\n`);
+            await playAgain();
             break;
         }
         else {
             if (a == 1) {
                 console.log(`The number was: ${pcRandom}`);
                 console.log("*** Game Over ***\n");
+                await playAgain();
                 break;
             }
             else {
@@ -50,4 +52,22 @@ async function guessingGame() {
         }
     }
 }
-guessingGame();
+let play_againUser = false;
+async function playAgain() {
+    let askUser = await inquirer.prompt([
+        {
+            name: "playUser",
+            type: "confirm",
+            message: "Do you want to play again: "
+        }
+    ]);
+    if (askUser.playUser == true) {
+        play_againUser = true;
+    }
+    else if (askUser.playUser == false) {
+        play_againUser = false;
+    }
+}
+do {
+    await guessingGame();
+} while (play_againUser);
